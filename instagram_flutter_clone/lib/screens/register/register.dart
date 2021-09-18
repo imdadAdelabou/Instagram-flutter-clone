@@ -5,6 +5,7 @@ import 'package:instagram_flutter_clone/components/base_view.dart';
 import 'package:instagram_flutter_clone/components/custom_button.dart';
 import 'package:instagram_flutter_clone/components/custom_textformfield.dart';
 import 'package:instagram_flutter_clone/screens/register/register_model.dart';
+import 'package:instagram_flutter_clone/utils/constant.dart';
 import 'package:instagram_flutter_clone/utils/functions.dart';
 
 class RegisterView extends StatelessWidget {
@@ -80,6 +81,7 @@ class RegisterView extends StatelessWidget {
                     ),
                     const SizedBox(height: space),
                     CustomTextFormField(
+                      typeField: TypeField.password,
                       hintText: "Pick a strong password",
                       getValue: (String value) {
                         model.setPassword(value);

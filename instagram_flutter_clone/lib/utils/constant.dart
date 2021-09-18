@@ -21,3 +21,5 @@ final ThemeData blackTheme = ThemeData(
 );
 
 enum ViewState { Error, Retrieved, Busy, Idle }
+
+enum TypeField { password, normal }
