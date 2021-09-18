@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:flutter/widgets.dart';
 import 'package:instagram_flutter_clone/components/base_view.dart';
+import 'package:instagram_flutter_clone/components/custom_button.dart';
 import 'package:instagram_flutter_clone/components/custom_textformfield.dart';
 import 'package:instagram_flutter_clone/screens/register/register_model.dart';
 import 'package:instagram_flutter_clone/utils/functions.dart';
@@ -58,7 +60,19 @@ class RegisterView extends StatelessWidget {
                     hintText: "Pick a strong password",
                   ),
                   const SizedBox(height: 30.0),
+                  CustomButton(
+                    content: Text(
+                      "Create Account",
+                      style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    action: () {},
+                  ),
+                  const SizedBox(height: 20.0),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Already have an account?",

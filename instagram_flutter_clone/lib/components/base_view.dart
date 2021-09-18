@@ -1,18 +1,18 @@
 import 'package:flutter/widgets.dart';
 import 'package:instagram_flutter_clone/locator.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:instagram_flutter_clone/screens/base_model.dart';
+import 'package:provider/provider.dart';
 
-class BaseView<T extends Model> extends StatelessWidget {
-  final ScopedModelDescendantBuilder<T> _builder;
+class BaseView<T extends BaseModel> extends StatelessWidget {
+  final Widget Function(BuildContext context, T value, Widget? child)? builder;
 
-  BaseView({required ScopedModelDescendantBuilder<T> builder})
-      : _builder = builder;
+  BaseView({this.builder});
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<T>(
-      model: locator<T>(),
-      child: ScopedModelDescendant<T>(builder: _builder),
+    return ChangeNotifierProvider<T>(
+      create: (context) => locator<T>(),
+      child: Consumer<T>(builder: builder!),
     );
   }
 }
