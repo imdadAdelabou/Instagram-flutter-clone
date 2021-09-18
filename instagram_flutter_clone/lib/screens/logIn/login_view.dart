@@ -42,15 +42,15 @@ class LoginView extends StatelessWidget {
                   child: returnHeadTitle("Email"),
                 ),
                 SizedBox(height: 8.0),
-                CustomTextFormField(hintText: "johnDoe@gmail.com"),
-                const SizedBox(height: 30.0),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: returnHeadTitle("Password"),
-                ),
-                SizedBox(height: 8.0),
-                CustomTextFormField(hintText: "Enter your password"),
-                const SizedBox(height: 30.0),
+                // CustomTextFormField(hintText: "johnDoe@gmail.com"),
+                // const SizedBox(height: 30.0),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 10.0),
+                //   child: returnHeadTitle("Password"),
+                // ),
+                // SizedBox(height: 8.0),
+                // CustomTextFormField(hintText: "Enter your password"),
+                // const SizedBox(height: 30.0),
                 CustomButton(
                   content: Text(
                     "Log in",

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter/widgets.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:instagram_flutter_clone/components/base_view.dart';
 import 'package:instagram_flutter_clone/components/custom_button.dart';
 import 'package:instagram_flutter_clone/components/custom_textformfield.dart';
@@ -8,7 +9,7 @@ import 'package:instagram_flutter_clone/utils/functions.dart';
 
 class RegisterView extends StatelessWidget {
   static const name = "/register";
-
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double maxWidth = MediaQuery.of(context).size.width;
@@ -18,84 +19,120 @@ class RegisterView extends StatelessWidget {
         child: Scaffold(
           body: Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20.0),
-                  Text(
-                    "Sign up",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: maxWidth * 0.08,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  const SizedBox(height: 30.0),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: returnHeadTitle("Name"),
-                  ),
-                  const SizedBox(height: space),
-                  const CustomTextFormField(
-                    hintText: "Olivier Cederborg",
-                  ),
-                  const SizedBox(height: 30.0),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: returnHeadTitle("Email"),
-                  ),
-                  const SizedBox(height: space),
-                  const CustomTextFormField(
-                    hintText: "tim@gmail.com",
-                  ),
-                  const SizedBox(height: 30.0),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: returnHeadTitle("Password"),
-                  ),
-                  const SizedBox(height: space),
-                  const CustomTextFormField(
-                    hintText: "Pick a strong password",
-                  ),
-                  const SizedBox(height: 30.0),
-                  CustomButton(
-                    content: Text(
-                      "Create Account",
+            child: Form(
+              key: _formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20.0),
+                    Text(
+                      "Sign up",
                       style: TextStyle(
-                        fontFamily: "Poppins",
+                        color: Colors.white,
+                        fontSize: maxWidth * 0.08,
                         fontWeight: FontWeight.bold,
+                        fontFamily: "Poppins",
                       ),
                     ),
-                    action: () {},
-                  ),
-                  const SizedBox(height: 20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Already have an account?",
+                    const SizedBox(height: 30.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: returnHeadTitle("Name"),
+                    ),
+                    const SizedBox(height: space),
+                    CustomTextFormField(
+                      getValue: (String value) {
+                        model.setName(value);
+                      },
+                      hintText: "Olivier Cederborg",
+                      listValidator: MultiValidator(
+                        [
+                          RequiredValidator(
+                              errorText: "Please enter your name"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: returnHeadTitle("Email"),
+                    ),
+                    const SizedBox(height: space),
+                    CustomTextFormField(
+                      hintText: "tim@gmail.com",
+                      getValue: (String value) {
+                        model.setEmail(value);
+                      },
+                      listValidator: MultiValidator(
+                        [
+                          RequiredValidator(
+                              errorText: "Please enter your email"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30.0),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: returnHeadTitle("Password"),
+                    ),
+                    const SizedBox(height: space),
+                    CustomTextFormField(
+                      hintText: "Pick a strong password",
+                      getValue: (String value) {
+                        model.setPassword(value);
+                      },
+                      listValidator: MultiValidator(
+                        [
+                          RequiredValidator(
+                              errorText: "Please enter your password"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30.0),
+                    CustomButton(
+                      content: Text(
+                        "Create Account",
                         style: TextStyle(
-                          color: Colors.grey,
                           fontFamily: "Poppins",
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed("/login");
-                        },
-                        child: Text(
-                          "Log in",
+                      action: () {
+                        if (_formKey.currentState!.validate()) {
+                          print("Name: ${model.name}");
+                          print("email: ${model.email}");
+                          print("password: ${model.password}");
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 20.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an account?",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.grey,
                             fontFamily: "Poppins",
                           ),
                         ),
-                      )
-                    ],
-                  ),
-                ],
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed("/login");
+                          },
+                          child: Text(
+                            "Log in",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Poppins",
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

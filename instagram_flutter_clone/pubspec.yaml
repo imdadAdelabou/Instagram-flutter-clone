@@ -32,6 +32,8 @@ dependencies:
   scoped_model: ^2.0.0-nullsafety.0
   font_awesome_flutter: ^9.1.0
   provider: ^6.0.0
+  supabase: ^0.2.6
+  form_field_validator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
