@@ -22,7 +22,7 @@ class RegisterView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Text(
                     "Sign up",
                     style: TextStyle(
@@ -82,7 +82,9 @@ class RegisterView extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/login");
+                        },
                         child: Text(
                           "Log in",
                           style: TextStyle(
