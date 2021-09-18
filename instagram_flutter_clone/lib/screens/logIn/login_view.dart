@@ -5,15 +5,17 @@ import 'package:instagram_flutter_clone/components/base_view.dart';
 import 'package:instagram_flutter_clone/components/custom_button.dart';
 import 'package:instagram_flutter_clone/components/custom_textformfield.dart';
 import 'package:instagram_flutter_clone/screens/logIn/login_model.dart';
+import 'package:instagram_flutter_clone/utils/constant.dart';
 import 'package:instagram_flutter_clone/utils/functions.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     double maxWidth = MediaQuery.of(context).size.width;
-    final _formKey = GlobalKey<FormState>();
+
     return BaseView<LoginModel>(
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
@@ -62,6 +64,7 @@ class LoginView extends StatelessWidget {
                   ),
                   SizedBox(height: 8.0),
                   CustomTextFormField(
+                    typeField: TypeField.password,
                     hintText: "Enter your password",
                     getValue: (String value) {
                       print(value);
@@ -85,6 +88,7 @@ class LoginView extends StatelessWidget {
                     action: () {
                       if (_formKey.currentState!.validate()) {
                         print("is safe");
+                        Navigator.of(context).pushNamed("/home");
                       }
                     },
                   ),
