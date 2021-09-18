@@ -32,7 +32,7 @@ class RegisterView extends StatelessWidget {
                       fontFamily: "Poppins",
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  const SizedBox(height: 30.0),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0),
                     child: returnHeadTitle("Name"),
