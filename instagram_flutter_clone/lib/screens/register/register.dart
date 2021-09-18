@@ -68,6 +68,8 @@ class RegisterView extends StatelessWidget {
                         [
                           RequiredValidator(
                               errorText: "Please enter your email"),
+                          EmailValidator(
+                              errorText: "Enter a valid email address"),
                         ],
                       ),
                     ),
@@ -86,6 +88,9 @@ class RegisterView extends StatelessWidget {
                         [
                           RequiredValidator(
                               errorText: "Please enter your password"),
+                          MinLengthValidator(8,
+                              errorText:
+                                  'Password must be at least 8 digits long'),
                         ],
                       ),
                     ),
