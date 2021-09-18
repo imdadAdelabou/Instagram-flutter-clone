@@ -61,6 +61,30 @@ class LoginView extends StatelessWidget {
                   ),
                   action: () {},
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account?",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ],
             ),
           ),
